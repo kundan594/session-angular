@@ -3,10 +3,19 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start": "ng serve demo-app",
+    "build": "ng build session-management",
+    "build:prod": "ng build session-management --configuration production",
+    "build:demo": "ng build demo-app",
+    "build:all": "npm run build && npm run build:demo",
+    "watch": "ng build session-management --watch --configuration development",
+    "test": "ng test",
+    "test:lib": "ng test session-management",
+    "test:demo": "ng test demo-app",
+    "test:coverage": "ng test --code-coverage",
+    "format": "prettier --write \"projects/**/*.{ts,html,css,json,md}\"",
+    "format:check": "prettier --check \"projects/**/*.{ts,html,css,json,md}\"",
+    "lint": "ng lint"
   },
   "private": true,
   "packageManager": "npm@11.10.0",
@@ -18,12 +27,17 @@
     "@angular/platform-browser": "^21.2.0",
     "@angular/router": "^21.2.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
   },
   "devDependencies": {
+    "@angular/build": "^21.2.9",
     "@angular/cli": "^21.2.9",
     "@angular/compiler-cli": "^21.2.0",
+    "jsdom": "^28.0.0",
+    "ng-packagr": "^21.2.0",
     "prettier": "^3.8.1",
-    "typescript": "~5.9.2"
+    "typescript": "~5.9.2",
+    "vitest": "^4.0.8"
   }
 }

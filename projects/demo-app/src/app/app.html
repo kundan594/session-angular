@@ -1,0 +1,115 @@
+<div class="app-container">
+  <header class="app-header">
+    <h1>{{ title }}</h1>
+    <div class="header-actions" *ngIf="isLoggedIn">
+      <span class="user-info">User: {{ sessionInfo?.userId }}</span>
+      <button class="btn btn-secondary" (click)="extendSession()">Extend Session</button>
+      <button class="btn btn-danger" (click)="logout()">Logout</button>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <!-- Conflict Message Alert -->
+    <div class="conflict-alert" *ngIf="conflictMessage && !isLoggedIn">
+      <div class="alert alert-danger">
+        <strong>⚠️ Session Conflict Detected!</strong>
+        <p>{{ conflictMessage }}</p>
+        <button class="btn btn-primary" (click)="conflictMessage = ''">Dismiss</button>
+      </div>
+    </div>
+
+    <div class="login-section" *ngIf="!isLoggedIn">
+      <div class="login-card">
+        <h2>Multi-User Session Testing</h2>
+        <p><strong>Test the multi-tab scenario:</strong></p>
+        <ol style="text-align: left; margin: 20px 40px;">
+          <li>Click "Login" below and enter "UserA" when prompted</li>
+          <li>Open this page in a new tab</li>
+          <li>In the new tab, click "Login" and enter "UserB"</li>
+          <li>Switch back to this tab (UserA)</li>
+          <li>You'll see a conflict message - UserA is logged out!</li>
+        </ol>
+        <p>This demo showcases the session management library features:</p>
+        <ul>
+          <li>✓ Automatic session timeout detection</li>
+          <li>✓ Idle timeout with user activity tracking</li>
+          <li>✓ Warning dialog before session expires</li>
+          <li>✓ Multi-tab session synchronization</li>
+          <li>✓ Keep-alive mechanism</li>
+          <li>✓ HTTP interceptor for authentication</li>
+          <li>✓ Session storage management</li>
+        </ul>
+        <button class="btn btn-primary btn-large" (click)="login()">
+          Login to Start Demo
+        </button>
+      </div>
+    </div>
+
+    <div class="dashboard-section" *ngIf="isLoggedIn">
+      <div class="info-card">
+        <h3>Session Information</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <label>User ID:</label>
+            <span>{{ sessionInfo?.userId }}</span>
+          </div>
+          <div class="info-item">
+            <label>Session Valid:</label>
+            <span [class.valid]="sessionInfo?.isValidSession" [class.invalid]="!sessionInfo?.isValidSession">
+              {{ sessionInfo?.isValidSession ? 'Yes' : 'No' }}
+            </span>
+          </div>
+          <div class="info-item">
+            <label>Active Tabs:</label>
+            <span>{{ sessionInfo?.activeTabs }}</span>
+          </div>
+          <div class="info-item">
+            <label>Session Start:</label>
+            <span>{{ sessionInfo?.sessionStartTime | date:'medium' }}</span>
+          </div>
+          <div class="info-item">
+            <label>Last Activity:</label>
+            <span>{{ sessionInfo?.lastActivityTime | date:'medium' }}</span>
+          </div>
+          <div class="info-item">
+            <label>Warning Shown:</label>
+            <span>{{ sessionInfo?.isWarningShown ? 'Yes' : 'No' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="features-card">
+        <h3>Test Features</h3>
+        <div class="feature-list">
+          <div class="feature-item">
+            <h4>Idle Timeout</h4>
+            <p>Stop interacting with the page for 4 minutes. A warning will appear at 1 minute remaining.</p>
+          </div>
+          <div class="feature-item">
+            <h4>Multi-Tab Sync</h4>
+            <p>Open this app in another tab. Logout from one tab and see the session end in all tabs.</p>
+          </div>
+          <div class="feature-item">
+            <h4>Session Extension</h4>
+            <p>Click "Extend Session" button or interact with the page to reset the idle timer.</p>
+          </div>
+          <div class="feature-item">
+            <h4>Browser Storage</h4>
+            <p>Open browser DevTools > Application > Local Storage to see session data being stored.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="console-card">
+        <h3>Console Output</h3>
+        <p>Open browser DevTools Console (F12) to see detailed session events and debug logs.</p>
+        <div class="console-info">
+          <code>Session events are logged in real-time</code>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Session Warning Dialog Component -->
+  <sm-session-warning-dialog></sm-session-warning-dialog>
+</div>
