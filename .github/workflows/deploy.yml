@@ -41,10 +41,19 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
       
+      - name: List build output (debug)
+        run: |
+          echo "Listing dist directory:"
+          ls -la dist/ || echo "dist not found"
+          echo "Listing dist/demo-app:"
+          ls -la dist/demo-app/ || echo "dist/demo-app not found"
+          echo "Checking for browser folder:"
+          ls -la dist/demo-app/browser/ || echo "browser folder not found"
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist/demo-app/browser'
+          path: './dist/demo-app'
   
   deploy:
     environment:
