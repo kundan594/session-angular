@@ -33,10 +33,10 @@ jobs:
         run: npm ci
       
       - name: Build session-management library
-        run: npm run build --if-present || ng build session-management
+        run: npm run build
       
       - name: Build demo app for production
-        run: ng build demo-app --configuration production --base-href=/session-angular/
+        run: npx ng build demo-app --configuration production --base-href=/session-angular/
       
       - name: List build output
         run: |
