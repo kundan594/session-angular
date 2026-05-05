@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Angular Session Management Demo</title>
+  <base href="/session-angular/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    // GitHub Pages SPA redirect
+    // Store the path and redirect to index.html
+    sessionStorage.setItem('redirect', location.pathname.slice('/session-angular'.length));
+    location.replace('/session-angular/');
+  </script>
+</head>
+<body>
+  <h1>Redirecting...</h1>
+</body>
+</html>

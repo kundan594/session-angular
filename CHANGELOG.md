@@ -41,6 +41,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed node_modules from Git tracking
 - Fixed PowerShell execution policy issues with batch scripts
 - Resolved multi-tab session conflict detection
+- Fixed CI workflow test command causing build failures
+- Added 404.html for GitHub Pages SPA routing support
+- Added .nojekyll file to prevent Jekyll processing on GitHub Pages
+- Updated CI workflow to handle missing test configuration gracefully
 
 ### Documentation
 - Added comprehensive guides for CI/CD, Web Workers, and deployment
