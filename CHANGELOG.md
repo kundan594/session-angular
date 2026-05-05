@@ -5,6 +5,53 @@ All notable changes to the Angular Session Management library will be documented
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-05-05
+
+### Added
+- **CI/CD Automation**
+  - GitHub Actions workflow for automatic deployment to GitHub Pages
+  - Continuous Integration workflow for build and test automation
+  - Automatic deployment on push to main branch
+  - Multi-version Node.js testing (18.x, 20.x)
+  - Code coverage reporting with Codecov integration
+  - Security audit automation
+  - Demo app automatically deploys to: https://kundan594.github.io/session-angular/
+
+- **Comprehensive Documentation**
+  - CI/CD Orchestration Guide (873 lines) - Complete CI/CD explanation with real-world examples
+  - Web Worker Implementation Guide (873 lines) - When and how to use Web Workers
+  - GitHub Pages Setup Guide (373 lines) - Step-by-step deployment setup
+  - GitHub Actions Location Guide (254 lines) - Visual guide for enabling Actions
+  - TODO List (545 lines) - Future enhancement roadmap with 23 planned features
+  - Total documentation: 18 files, 10,000+ lines
+
+- **Development Tools**
+  - Git commit automation scripts (git-push.bat, cleanup-git.bat)
+  - Quick fix instructions for common issues
+  - Troubleshooting guides for Git and deployment
+  - Version management guidelines
+
+### Changed
+- Updated .gitignore to exclude node_modules at all levels (**/node_modules)
+- Enhanced package.json with additional build scripts
+- Improved demo app with multi-user session conflict detection
+- Added sessionStorage vs localStorage strategy for tab isolation
+
+### Fixed
+- Removed node_modules from Git tracking
+- Fixed PowerShell execution policy issues with batch scripts
+- Resolved multi-tab session conflict detection
+
+### Documentation
+- Added comprehensive guides for CI/CD, Web Workers, and deployment
+- Created visual guides for GitHub Actions setup
+- Added decision frameworks for when to use Web Workers
+- Documented real-world examples from Google Sheets, Figma, Gmail, Photopea
+- Added performance benchmarks and comparisons
+- Created complete API reference documentation
+- Added multi-tab scenario testing guide
+
+
 ## [1.0.0] - 2026-05-04
 
 ### Added
